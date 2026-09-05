@@ -16,9 +16,9 @@
 </head>
 <body>
   <h1>Mia Extension – Privacy Policy</h1>
-  <p class="updated"><strong>Last updated:</strong> 2026-03-06</p>
+  <p class="updated"><strong>Last updated:</strong> 2026-09-03</p>
 
-  <p>Mia is a Chrome extension that helps real estate agents fill forms using file uploads and AI, via a side panel that works with Centris.</p>
+  <p>Mia is a Chrome extension that helps real estate agents retrieve property documents and fill forms using file uploads and AI, via a side panel that works with Centris.</p>
 
   <h2>Data we collect and use</h2>
   <ul>
@@ -26,20 +26,26 @@
        We store uploaded files so we can process them for form-filling and adapt to new AI technology. 
        File content is used only for these purposes and to improve the extension’s functionality.</li>
     <li><strong>Selected listing ID:</strong> When you select a listing in the extension, its ID is stored locally in your browser so the extension can restore your selection. This stays on your device.</li>
+    <li><strong>Authentication and preferences:</strong> The extension stores the access key used to authenticate with Mia, a browser-instance identifier, and language and display preferences in Chrome's local storage.</li>
     <li><strong>Centris:</strong> The extension can interact with pages on <code>https://zone.centris.ca</code> when you use it there. Page content is used only to support form-filling and related features in the extension and is not sent to us or to any third party.</li>
+    <li><strong>User-started property retrievals:</strong> When you explicitly start a retrieval, Mia opens a dedicated tab on Hydro-Québec, PG Municipal, or a Ville de Montréal property service. It reads and sends to the Mia backend only the requested estimate, tax bill, valuation role, or the page content needed to create that document for the selected listing.</li>
+    <li><strong>Provider request metadata:</strong> During a user-started Hydro-Québec or PG Municipal retrieval, Mia temporarily processes the request URL, HTTP method, response status or network error, and provider-tab association needed to determine whether a retrieval step completed. Mia does not collect general browsing history or observe unrelated tabs.</li>
+    <li><strong>Technical diagnostics:</strong> Mia may send error codes, sanitized error messages, stack traces, extension version, and listing identifiers to the Mia backend solely to monitor reliability and resolve technical issues. A bounded queue of unsent diagnostics may be kept temporarily in Chrome's local storage.</li>
   </ul>
 
   <h2>What we do not do</h2>
   <ul>
     <li>We do not sell, rent, or share your data with advertisers, data brokers, or other third parties.</li>
     <li>We do not use your data for advertising or for purposes unrelated to the extension's functionality (form-filling and improving it with new AI technology).</li>
+    <li>We do not collect general browsing history, block or modify provider network traffic, or monitor tabs unrelated to a retrieval explicitly started in Mia.</li>
   </ul>
 
   <h2>Storage and security</h2>
   <ul>
     <li>All data is protected by the shared secret you receive and use to initialize the extension. Access to your data is tied to that secret.</li>
-    <li>Selected listing ID and similar preferences are kept in Chrome's local storage on your device.</li>
+    <li>The access key, selected listing ID, browser-instance identifier, preferences, and any queued sanitized diagnostics are kept in Chrome's local storage on your device. Temporary provider operation-to-tab associations use Chrome session storage and disappear when Chrome exits.</li>
     <li>Uploaded files are stored on our systems for processing and to adapt to new AI technology. We handle them in line with this policy.</li>
+    <li>Data sent between the extension, provider websites, and the Mia backend is transmitted over HTTPS, except when a developer deliberately uses the local development build with localhost services.</li>
   </ul>
 
   <h2>Changes</h2>
