@@ -16,34 +16,37 @@
 </head>
 <body>
   <h1>Mia Extension – Privacy Policy</h1>
-  <p class="updated"><strong>Last updated:</strong> 2026-09-08</p>
+  <p class="updated"><strong>Last updated:</strong> 2026-10-22</p>
 
-  <p>Mia is a Chrome extension that helps real estate agents retrieve property documents and fill forms using file uploads and AI, via a side panel that works with Centris.</p>
+  <p>Mia is a Chrome extension that helps real estate agents retrieve property documents and fill forms using information prepared in the Mia portal. Its side panel shows the connected account, a portal link and the session activity log.</p>
 
   <h2>Data we collect and use</h2>
   <ul>
-    <li><strong>File uploads:</strong> You can upload files so the extension can extract information and fill forms (e.g. listing or transaction details). 
+    <li><strong>File uploads:</strong> You can upload files in the portal so Mia can extract information and the extension can fill forms (e.g. listing or transaction details).
        We store uploaded files so we can process them for form-filling and adapt to new AI technology. 
        File content is used only for these purposes and to improve the extension’s functionality.</li>
-    <li><strong>Selected listing ID:</strong> When you select a listing in the extension, its ID is stored locally in your browser so the extension can restore your selection. This stays on your device.</li>
-    <li><strong>Authentication and preferences:</strong> The extension stores the access key used to authenticate with Mia, a browser-instance identifier, and language and display preferences in Chrome's local storage.</li>
-    <li><strong>Centris:</strong> The extension can interact with pages on <code>https://zone.centris.ca</code> when you use it there. Page content is used only to support form-filling and related features in the extension and is not sent to us or to any third party.</li>
-    <li><strong>User-started property retrievals:</strong> When you explicitly start a retrieval, Mia opens a dedicated tab on Hydro-Québec, PG Municipal, Saint-Hyacinthe, or a Ville de Montréal property service. It reads and sends to the Mia backend only the requested estimate, tax bill, valuation role, or the page content needed to create that document for the selected listing.</li>
+    <li><strong>Listing context:</strong> The portal provides the listing identifier and data needed for each user-started robot operation. Operation context is associated with the connected account and the robot tabs in Chrome session storage.</li>
+    <li><strong>Authentication and preferences:</strong> The extension stores portal-issued refresh credentials, account and session identifiers, a browser-instance identifier, and language and appearance preferences in Chrome local storage. Access tokens use Chrome session storage.</li>
+    <li><strong>Centris:</strong> The extension can interact with pages on <code>https://zone.centris.ca</code> when you use it there. Page content is used only to support form-filling and related features. The extension sends listing data and required photos or PDFs to the provider when you request form filling. Page content can also be included in a problem report you explicitly start in the portal.</li>
+    <li><strong>User-started property retrievals:</strong> When you explicitly start a retrieval, Mia opens a dedicated tab on Hydro-Québec, PG Municipal, Saint-Hyacinthe, a Ville de Montréal property service, Instanet/TransactionDesk or Matrix. The robot uses a tab opened for the operation or explicitly selected by you. It reads and sends to the Mia backend only the requested estimate, tax bill, valuation role, selected PDF, or the page content needed to create that document for the selected listing.</li>
     <li><strong>Provider request metadata:</strong> During a user-started property retrieval, Mia temporarily processes only the request URL, HTTP method, response status or network error, and provider-tab association needed to determine whether a retrieval step completed. Mia does not collect general browsing history or observe unrelated tabs.</li>
     <li><strong>Technical diagnostics:</strong> Mia may send error codes, sanitized error messages, stack traces, extension version, and listing identifiers to the Mia backend solely to monitor reliability and resolve technical issues. A bounded queue of unsent diagnostics may be kept temporarily in Chrome's local storage.</li>
+    <li><strong>Session activity log:</strong> The extension records progress, errors and results with account, operation, execution and tab identifiers and timestamps. This log remains available while the panel is closed and through background-worker suspension during the browser session. The extension also notifies portal tabs of robot state changes so they can refresh the operation's data from Mia.</li>
+    <li><strong>User-started problem recordings:</strong> When you start a problem recording in the portal, the extension can collect HTML evidence from robot tabs belonging to the connected account and return it to the portal for the report. HTML evidence can include page text, form values and property or contact information displayed on the page. This collection is limited to the recording and the account's robot tabs.</li>
   </ul>
 
   <h2>What we do not do</h2>
   <ul>
-    <li>We do not sell, rent, or share your data with advertisers, data brokers, or other third parties.</li>
+    <li>We do not sell or rent your data or share it with advertisers or data brokers. Mia uses hosting, storage and document-analysis service providers to process the information required for the requested workflows.</li>
     <li>We do not use your data for advertising or for purposes unrelated to the extension's functionality (form-filling and improving it with new AI technology).</li>
-    <li>We do not collect general browsing history, block or modify provider network traffic, or monitor tabs unrelated to a retrieval explicitly started in Mia.</li>
+    <li>We do not collect general browsing history, block or modify provider network traffic, or monitor tabs unrelated to a user-started Mia robot operation or problem recording.</li>
   </ul>
 
   <h2>Storage and security</h2>
   <ul>
-    <li>All data is protected by the shared secret you receive and use to initialize the extension. Access to your data is tied to that secret.</li>
-    <li>The access key, selected listing ID, browser-instance identifier, preferences, and any queued sanitized diagnostics are kept in Chrome's local storage on your device. Temporary provider operation-to-tab associations use Chrome session storage and disappear when Chrome exits.</li>
+    <li>Access to your data is authenticated through a portal-issued session and tied to the connected account and its permissions.</li>
+    <li>Portal-issued refresh credentials, account and session identifiers, the browser-instance identifier, preferences, queued sanitized diagnostics and pending cancellations are kept in Chrome local storage. Pending cancellations can retain their operation context and the credential needed to notify Mia until delivery succeeds. Access tokens, robot state and queues, operation-to-tab associations, temporary problem-recording HTML evidence and the activity log use Chrome session storage and disappear when Chrome exits.</li>
+    <li><strong>Activity-log limits:</strong> The log is capped at 5,000 entries and 2 MiB. Older entries are removed when a limit is reached, with an indication in the panel. The log is also cleared on disconnect or account change.</li>
     <li>Uploaded files are stored on our systems for processing and to adapt to new AI technology. We handle them in line with this policy.</li>
     <li>Data sent between the extension, provider websites, and the Mia backend is transmitted over HTTPS, except when a developer deliberately uses the local development build with localhost services.</li>
   </ul>
